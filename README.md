@@ -1,72 +1,39 @@
 <img src="https://bit.ly/2VnXWr2" alt="Ironhack Logo" width="100"/>
 
-# Title of My Project
-*[Your Name]*
+# FOREX Prediction
+*[Ignacio Rus Prados]*
 
-*[Your Cohort, Campus & Date]*
+*[DAFT MAR21, Remote, 20/05/2021]*
 
 ## Content
 - [Project Description](#project-description)
-- [Hypotheses / Questions](#hypotheses-questions)
 - [Dataset](#dataset)
-- [Cleaning](#cleaning)
 - [Analysis](#analysis)
 - [Model Training and Evaluation](#model-training-and-evaluation)
 - [Conclusion](#conclusion)
-- [Future Work](#future-work)
-- [Workflow](#workflow)
-- [Organization](#organization)
 - [Links](#links)
 
 ## Project Description
-Write a short description of your project: 3-5 sentences about what your project is about, why you chose this topic (if relevant), and what you are trying to show.
-
-## Hypotheses / Questions
-* What data/business/research/personal question you would like to answer?
-* What is the context for the question and the possible scientific or business application?
-* What are the hypotheses you would like to test in order to answer your question?  
-Frame your hypothesis with statistical/data languages (i.e. define Null and Alternative Hypothesis). You can use formulas if you want but that is not required.
+I have set up a Machine Learning model to analyze FOREX historical data and try to predict the change in price. In particular, I will examine the EUR/USD currency pair.
 
 ## Dataset
-* Where did you get your data? If you downloaded a dataset (either public or private), describe where you downloaded it and include the command to load the dataset.
-* Did you build your own datset? If so, did you use an API or a web scraper? PRovide the relevant scripts in your repo.
-* For all types of datasets, provide a description of the size, complexity, and data types included in your dataset, as well as a schema of the tables if necessary.
-* If the question cannot be answered with the available data, why not? What data would you need to answer it better?
-
-## Cleaning
-Describe your full process of data wrangling and cleaning. Document why you chose to fill missing values, extract outliers, or create the variables you did as well as your reasoning behind the process.
+The data was collected from https://www.investing.com/currencies/eur-usd-historical-data. A daily time frame was chosen and data from 01/01/2002 to 01/01/2021 was downloaded. This included opening and closing prices for each day, as well as the maximum and minimum prices reached during the day.
 
 ## Analysis
-* Overview the general steps you went through to analyze your data in order to test your hypothesis.
-* Document each step of your data exploration and analysis.
-* Include charts to demonstrate the effect of your work.
-* If you used Machine Learning in your final project, describe your feature selection process.
+Before deploying our Machine Learning model, a variety of econometrics indicators were calculated to encapsulate all the essential information about the price evolution. Relevant indicators such as RSI, MACD, ADX and both regular and exponential moving averages with different periods were added. The correlation between these features and the change in price was minimal, which shows the stochastical nature of the problem.
 
 ## Model Training and Evaluation
-*Include this section only if you chose to include ML in your project.*
-* Describe how you trained your model, the results you obtained, and how you evaluated those results.
+The Machine Learning algorithm used was GradientBoostingClassifier(), which was complemented with an scaler (StandardScaler, although RobustScaler was also tested and showed generally worse results) to prepare the data for model training. The data was splitted into a training set (60%), validation set (20%) and test set (20%).
+
+Several models were trained and tested, starting with simple models and consecutively adding improvements and fine-tuning the model parameters.
+
+Regarding the evaluation, the accuracy was calculated both in the train and test set. The accuracy score for the test set was never over 60%, so the Cohen's Kappa score was also calculated in order to test how likely it was that our results were signicant or just a matter of chance.
 
 ## Conclusion
-* Summarize your results. What do they mean?
-* What can you say about your hypotheses?
-* Interpret your findings in terms of the questions you try to answer.
-
-## Future Work
-Address any questions you were unable to answer, or any next steps or future extensions to your project.
-
-## Workflow
-Outline the workflow you used in your project. What were the steps?
-How did you test the accuracy of your analysis and/or machine learning algorithm?
-
-## Organization
-How did you organize your work? Did you use any tools like a trello or kanban board?
-
-What does your repository look like? Explain your folder and file structure.
+Despite the amount of tries and different techniques used, it was concluded that, with the time limitations of this project and my current understanding of FOREX market, it was not possible to find a model that can consistently make accurate predictions.
 
 ## Links
-Include links to your repository, slides and trello/kanban board. Feel free to include any other links associated with your project.
 
-
-[Repository](https://github.com/)  
-[Slides](https://slides.com/)  
-[Trello](https://trello.com/en)  
+[Repository](https://github.com/IgnacioRus/FOREX-Prediction-Final-Project)  
+[Slides](https://www.canva.com/design/DAEfA134LNY/EefpYftt9b9kROeWNksa7Q/edit#)  
+[Trello](https://trello.com/b/xZ84Ljv6/forex-prediction-final-project)  
